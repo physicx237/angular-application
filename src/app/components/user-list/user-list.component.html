@@ -1,0 +1,28 @@
+<div class="user-list">
+  <input (input)="onInput($event)" />
+
+  <select (change)="onChange($event)">
+    @for (selectOption of selectOptions; track selectOption.value) {
+      <option [value]="selectOption.value">{{ selectOption.name }}</option>
+    }
+  </select>
+
+  @if ((getUsers() | async)?.length) {
+  <ul class="user-list__list list">
+    @for (user of getUsers() | async; track user.id) {
+      <li
+        class="list__item"
+        [class.list__item_active]="currentSelectedUserId === user.id"
+        (click)="selectUser(user)"
+      >
+        <div>ID: {{ user.id }}</div>
+        <div>Name: {{ user.name }}</div>
+        <div>Email: {{ user.email }}</div>
+        <div>Active: {{ user.active }}</div>
+      </li>
+    }
+  </ul>
+  } @else {
+    <span>Ничего не найдено</span>
+  }
+</div>

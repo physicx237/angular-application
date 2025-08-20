@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [UserListComponent, UserInfoComponent],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
-  protected title = 'angular-test-application';
+  email!: string | null;
 }
