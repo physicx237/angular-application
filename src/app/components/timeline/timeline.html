@@ -1,0 +1,35 @@
+<div class="timeline">
+  <button
+    class="timeline__navigate-to-dashboard-button"
+    matButton="filled"
+    (click)="navigateToDashboard()"
+  >
+    Go To Dashboard
+  </button>
+
+  <div class="timeline__element-container">
+    <span class="timeline__text">Timeline</span>
+
+    <div #timelineElement class="timeline__element">
+      @for (event of data$ | async; track event) {
+        @if (event.duration) {
+          @if (event.type !== null) {
+            <div
+              [matTooltip]="getTooltipMessage(event)"
+              matTooltipClass="timeline-event-element-tooltip"
+              class="timeline__event-element"
+              [style.width.px]="event.width"
+              [style.backgroundColor]="event.backgroundColor"
+            ></div>
+          } @else {
+            <div
+              class="timeline__event-element"
+              [style.width.px]="event.width"
+              [style.backgroundColor]="event.backgroundColor"
+            ></div>
+          }
+        }
+      }
+    </div>
+  </div>
+</div>

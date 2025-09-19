@@ -1,0 +1,53 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+
+  &__navigate-to-dashboard-button {
+    width: max-content;
+  }
+
+  &__element-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    gap: 50px;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__text {
+    font-size: 50px;
+  }
+
+  &__element {
+    display: flex;
+    width: 90%;
+    height: 50px;
+    border: 20px solid grey;
+    border-radius: 50px;
+    overflow: hidden;
+    background-color: darkslategrey;
+  }
+
+  &__event-element {
+    width: 20px;
+    height: 100%;
+  }
+}
+
+::ng-deep mat-tooltip-component {
+  .timeline-event-element-tooltip {
+    .mat-mdc-tooltip-surface {
+      max-width: max-content;
+    }
+  }
+}
